@@ -1,18 +1,17 @@
-var dom = document.getElementById('root');
+import Header from './Header';
+import Sidebar from './Sidebar';
+import Content from './Content';
 
-// Header();
-// Sidebar();
-// Content();
+// var dom = document.getElementById('root');			// 写在这里会报错的哦
 
 new Header();
 new Sidebar();
 new Content();
 
-
 /*
-虽然index.js不用把所有的业务逻辑写进来了
-但是文件变多了啊, index.html 引入的文件变多了 http请求
 
-并且不能看出Header() 对应的文件是哪个  不易维护
+文件目录结构一目了然   
+不存在index.html 中index.js顺序错误 导致bug
+index.js模块把依赖的模块都导入进来 不存在了index.js的依赖问题
 
 */
