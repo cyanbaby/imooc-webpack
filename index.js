@@ -1,13 +1,18 @@
 var dom = document.getElementById('root');
 
-var header = document.createElement('div');
-header.innerHTML = 'header'
-dom.append(header);
+// Header();
+// Sidebar();
+// Content();
 
-var header = document.createElement('div');
-header.innerHTML = 'siderbar'
-dom.append(header);
+new Header();
+new Sidebar();
+new Content();
 
-var header = document.createElement('div');
-header.innerHTML = 'content'
-dom.append(header);
+
+/*
+虽然index.js不用把所有的业务逻辑写进来了
+但是文件变多了啊, index.html 引入的文件变多了 http请求
+
+并且不能看出Header() 对应的文件是哪个  不易维护
+
+*/
