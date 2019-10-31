@@ -1,3 +1,28 @@
+不推荐全局安装: cnpm i webpack webpack-cli -g
+		两个项目webpack版本不一样, cnpm i webpack webpack-cli -D  局部安装 npx启动
+JS模块和其他模块打包是不一样滴
+	require('./content.png') 我只要拿到png的src; 而不是打包到模块js中
+
+webpack是一个默认隐形的默认配置执行; 配置文件webpack.config.js可以重写
+
+添加"scripts"命令 "bundle": "webpack", 没有全局安装webpack, 也会从项目中开始查找
+
+打包输出的参数 
+	Hash: 1fb569b3969fc8cfa585		本次打包唯一值
+	Version: webpack 4.41.2
+	Time: 107ms	耗时
+	Asset 			Size 					Chunks(多个文件)   Chunk Names
+	bundle.js 	1.36KB				0									chunk名(entry中配置的)
+	Entrypoint main = bundle.js
+	[0] ./src/index.js 436 bytes {0} [built]
+	[1] ./src/header.js 196 bytes {0} [built]
+	[2] ./src/Sidebar.js 198 bytes {0} [built]
+	[3] ./src/Content.js 197 bytes {0} [built]
+
+	(每个文件都有一个自己的ID, bundle.js大型项目和其他的模块有关系, 其他的chunks ID) 	
+
+
+
 Tree shaking
 
 懒加载
