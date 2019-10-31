@@ -5,4 +5,4 @@ function Sidebar() {
 	dom.append(header);
 }
 
-export default Sidebar;
+module.exports = Sidebar;

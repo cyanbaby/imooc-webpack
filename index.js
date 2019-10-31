@@ -1,6 +1,6 @@
-import Header from './Header';
-import Sidebar from './Sidebar';
-import Content from './Content';
+var Header = require('./header.js');
+var Sidebar = require('./Sidebar.js');
+var Content = require('./Content.js');
 
 // var dom = document.getElementById('root');			// 写在这里会报错的哦
 
