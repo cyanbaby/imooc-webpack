@@ -5,8 +5,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 // main 就是打包输出的 chunk Names
 module.exports = {
 	mode: 'development',
+	devtool: 'source-map',
 	entry: {
-		sub: './src/index.js',
 		main: './src/index.js'
 	},
 
@@ -47,7 +47,6 @@ module.exports = {
 	}), new CleanWebpackPlugin(['dist'])],
 
 	output: {
-		publicPath: 'http://localhost:8080',
 		filename: '[name].js',
 		path: path.resolve(__dirname, 'dist')
 	}
@@ -56,9 +55,11 @@ module.exports = {
 
 /*
 
-我像把entry: 里面的 index.js打包两次一个个main.js一个sub.js
-	首先output不写出口 默认是main(可以在入口把main换成别的, 就生成别的)
 
-	1. 入口写了两个出口不写  或者 写占位符   此时两个文件都被html-webpack-plugin注入了html模板哦
-	
+mode: 'development', 默认开启sourceMap的  devtool:none关闭
+
+devtool: 'source-map',构建映射关系 有很多模式影响性能，
+		线上代码不需要开启了，非要开启的话选择这个cheap-module-source-map就行了
+		开发就用cheap-module-eval-source-ma
+
 */
