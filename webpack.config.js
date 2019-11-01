@@ -25,13 +25,17 @@ module.exports = {
 			{
 				loader:'css-loader',
 				options: {
-					importLoaders: 2,
-					modules: true
+					importLoaders: 2
 				}
 			},
 			'sass-loader',
 			'postcss-loader'
 			]
+		},{
+			test: /\.(eot|ttf|woff|svg)$/,
+			use: {
+				loader: 'file-loader'
+			}
 		}]
 	},
 	output: {
@@ -44,5 +48,12 @@ module.exports = {
 /*
 
 css 模块化,  如果createAvatar模块也需要 css模块就需要单独引入了 如果过需要模块化样式 也需要和index一样from之后 style.avatar
+{
+	test: /\.(eot|ttf|woff|svg)$/,
+	use: {
+		loader: 'file-loader'
+	}
+}
+
 
 */

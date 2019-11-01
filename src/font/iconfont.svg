@@ -1,0 +1,32 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2013-9-30: Created.
+-->
+<svg>
+<metadata>
+Created by iconfont
+</metadata>
+<defs>
+
+<font id="iconfont" horiz-adv-x="1024" >
+  <font-face
+    font-family="iconfont"
+    font-weight="500"
+    font-stretch="normal"
+    units-per-em="1024"
+    ascent="896"
+    descent="-128"
+  />
+    <missing-glyph />
+    
+    <glyph glyph-name="qp_icon_check" unicode="&#59176;" d="M847.104 735.274667a64 64 0 0 0 16.213333-89.045334l-384-554.666666a64 64 0 0 0-101.802666-4.522667l-213.333334 256a64 64 0 0 0 98.304 81.92l159.488-191.317333 336.085334 485.461333a64 64 0 0 0 89.045333 16.213333z"  horiz-adv-x="1024" />
+
+    
+    <glyph glyph-name="qp_icon_music_on" unicode="&#59180;" d="M860.074667 493.013333l-268.373334 296.533334c-0.085333 13.269333-25.770667 35.413333-39.850666 35.413333-22.058667 0-39.850667-15.872-39.850667-35.541333v-402.602667H392.533333a199.168 199.168 0 1 1 199.125334-199.125333V511.914667l216.192-81.92c43.178667-16.298667 81.834667 30.378667 52.224 63.018666z"  horiz-adv-x="1024" />
+
+    
+
+
+  </font>
+</defs></svg>
