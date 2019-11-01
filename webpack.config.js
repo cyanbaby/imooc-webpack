@@ -11,10 +11,11 @@ module.exports = {
 		rules: [{
 			test: /\.(jpg|png|gif)$/,
 			use: {
-				loader: 'file-loader',
+				loader: 'url-loader',
 				options: {
 					name: '[name]_[hash].[ext]',
-					outputPath: 'images/'
+					outputPath: 'images/',
+					limit: 20480
 				}
 			}
 		}]
@@ -38,4 +39,6 @@ webpack做模块打包的时候, 遇到不知道怎么办的时候, 在module找
 				outputPath: 'images/'         //配置路径  是基于output出口的路径哦
 			} 配置file-loader
 
+cnpm i -D url-loader
+	把图片打包成base64了, 但是大图片就很坑哦  limit配置超过(B)就和file-loader一样移动过去, 没有就base64
 */
