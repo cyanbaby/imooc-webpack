@@ -1,17 +1,27 @@
-var Header = require('./header.js');
-var Sidebar = require('./Sidebar.js');
-var Content = require('./Content.js');
+import avatar from './avatar.png';		// ES Module
+// 思考
+// import Header from './header.vue'; 
 
-// var dom = document.getElementById('root');			// 写在这里会报错的哦
+var img = new Image();
+img.src = avatar;
 
-new Header();
-new Sidebar();
-new Content();
+var root = document.getElementById('root');
+root.append(img);
+
+
+
+
+
+
 
 /*
+// CommonJS
 
-文件目录结构一目了然   
-不存在index.html 中index.js顺序错误 导致bug
-index.js模块把依赖的模块都导入进来 不存在了index.js的依赖问题
+var avatar = require('./avatar.png');
+// var avatar = require('http://bl.7yue.pro/images/sentence.6.png');		// 报错
+
+console.log(avatar);			// 2c7d45f05cd0b1e55c7f09cf1df463bf.png
+
+
 
 */

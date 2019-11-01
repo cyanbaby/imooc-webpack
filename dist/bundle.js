@@ -86,36 +86,14 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/Content.js":
+/***/ "./src/avatar.png":
 /*!************************!*\
-  !*** ./src/Content.js ***!
+  !*** ./src/avatar.png ***!
   \************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("function Content() {\r\n\tvar dom = document.getElementById('root');\t\r\n\tvar header = document.createElement('div');\r\n\theader.innerHTML = 'content'\r\n\tdom.append(header);\r\n}\r\n\r\nmodule.exports = Content;\n\n//# sourceURL=webpack:///./src/Content.js?");
-
-/***/ }),
-
-/***/ "./src/Sidebar.js":
-/*!************************!*\
-  !*** ./src/Sidebar.js ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("function Sidebar() {\r\n\tvar dom = document.getElementById('root');\t\r\n\tvar header = document.createElement('div');\r\n\theader.innerHTML = 'siderbar'\r\n\tdom.append(header);\r\n}\r\n\r\nmodule.exports = Sidebar;\n\n//# sourceURL=webpack:///./src/Sidebar.js?");
-
-/***/ }),
-
-/***/ "./src/header.js":
-/*!***********************!*\
-  !*** ./src/header.js ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("function Header() {\r\n\tvar dom = document.getElementById('root');\t\r\n\tvar header = document.createElement('div');\r\n\theader.innerHTML = 'header'\r\n\tdom.append(header);\r\n}\r\n\r\nmodule.exports = Header;\r\n\n\n//# sourceURL=webpack:///./src/header.js?");
+eval("module.exports = __webpack_require__.p + \"2c7d45f05cd0b1e55c7f09cf1df463bf.png\";\n\n//# sourceURL=webpack:///./src/avatar.png?");
 
 /***/ }),
 
@@ -123,10 +101,11 @@ eval("function Header() {\r\n\tvar dom = document.getElementById('root');\t\r\n\
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("var Header = __webpack_require__(/*! ./header.js */ \"./src/header.js\");\r\nvar Sidebar = __webpack_require__(/*! ./Sidebar.js */ \"./src/Sidebar.js\");\r\nvar Content = __webpack_require__(/*! ./Content.js */ \"./src/Content.js\");\r\n\r\n// var dom = document.getElementById('root');\t\t\t// 写在这里会报错的哦\r\n\r\nnew Header();\r\nnew Sidebar();\r\nnew Content();\r\n\r\n/*\r\n\r\n文件目录结构一目了然   \r\n不存在index.html 中index.js顺序错误 导致bug\r\nindex.js模块把依赖的模块都导入进来 不存在了index.js的依赖问题\r\n\r\n*/\n\n//# sourceURL=webpack:///./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _avatar_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./avatar.png */ \"./src/avatar.png\");\n/* harmony import */ var _avatar_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_avatar_png__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\nvar img = new Image();\r\nimg.src = _avatar_png__WEBPACK_IMPORTED_MODULE_0___default.a;\r\n\r\nvar root = document.getElementById('root');\r\nroot.append(img);\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n/*\r\n\r\nvar avatar = require('./avatar.png');\r\n// var avatar = require('http://bl.7yue.pro/images/sentence.6.png');\t\t// 报错\r\n\r\nconsole.log(avatar);\t\t\t// 2c7d45f05cd0b1e55c7f09cf1df463bf.png\r\n\r\n\r\n\r\n*/\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
