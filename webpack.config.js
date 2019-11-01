@@ -10,6 +10,11 @@ module.exports = {
 		main: './src/index.js'
 	},
 
+	devServer: {
+		contentBase: './dist',
+		open: true
+	},
+
 	module: {
 		rules: [{
 			test: /\.(jpg|png|gif)$/,
@@ -55,11 +60,24 @@ module.exports = {
 
 /*
 
+方式一  自动监听 浏览器手动刷新
+  "scripts": {
+    "watch": "webpack --watch"
+  },
 
-mode: 'development', 默认开启sourceMap的  devtool:none关闭
 
-devtool: 'source-map',构建映射关系 有很多模式影响性能，
-		线上代码不需要开启了，非要开启的话选择这个cheap-module-source-map就行了
-		开发就用cheap-module-eval-source-ma
+方式二   自动监听  浏览器自动刷新
+	配置devServer   cnpm i -D webpack-dev-server
+	devServer: {
+		contentBase: './dist',
+		open: true,打开浏览器   ... port .. 很多配置项
+		proxy: {
+			'/api': 'http://localhost:3000'
+			// 这句话的意思就是用户访问/api地址的话，http://localhost:8000/api  会转发到 http://localhost:3000
+
+		}
+	},
+
+	添加scripts脚本   "start": "webpack-dev-server"
 
 */

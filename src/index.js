@@ -1,1 +1,1 @@
-cosole.log('hello webpack')
+console.log('tset watch  !!!')
