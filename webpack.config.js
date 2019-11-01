@@ -52,6 +52,7 @@ module.exports = {
 	}), new CleanWebpackPlugin(['dist'])],
 
 	output: {
+		publicPath: '/',
 		filename: '[name].js',
 		path: path.resolve(__dirname, 'dist')
 	}
@@ -59,25 +60,10 @@ module.exports = {
 
 
 /*
+"scripts"添加      "server": "node server.js"
+		起一个服务，监听src改变 自动重启服务器，更新网页内容
 
-方式一  自动监听 浏览器手动刷新
-  "scripts": {
-    "watch": "webpack --watch"
-  },
-
-
-方式二   自动监听  浏览器自动刷新
-	配置devServer   cnpm i -D webpack-dev-server
-	devServer: {
-		contentBase: './dist',
-		open: true,打开浏览器   ... port .. 很多配置项
-		proxy: {
-			'/api': 'http://localhost:3000'
-			// 这句话的意思就是用户访问/api地址的话，http://localhost:8000/api  会转发到 http://localhost:3000
-
-		}
-	},
-
-	添加scripts脚本   "start": "webpack-dev-server"
+cnpm i -D express webpack-dev-middleware
+		webapck-dev-middleware 中间件 server用webpack
 
 */
