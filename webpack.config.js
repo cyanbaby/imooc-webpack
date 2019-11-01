@@ -6,6 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
 	mode: 'development',
 	entry: {
+		sub: './src/index.js',
 		main: './src/index.js'
 	},
 
@@ -46,21 +47,18 @@ module.exports = {
 	}), new CleanWebpackPlugin(['dist'])],
 
 	output: {
-		filename: 'bundle.js',
+		publicPath: 'http://localhost:8080',
+		filename: '[name].js',
 		path: path.resolve(__dirname, 'dist')
 	}
 }
 
 
 /*
-cnpm i -D html-webpack-plugin 插件会生成一个index.html并把打包好的bundle.js引入  
-		可以配置index.html模板 不用自己引入bundle.js
-		打包之后运行 具体看插件说明
-换一下bundle.js的名字， 生成之后原来的bundle.js还在里面 并没有被删除   cnpm i clean-webpack-plugin@1.0.0 -D
-		高版本和1.0.0有区别哦使用的时候
-		打包之前运行 具体看插件说明
 
+我像把entry: 里面的 index.js打包两次一个个main.js一个sub.js
+	首先output不写出口 默认是main(可以在入口把main换成别的, 就生成别的)
 
-plugin可以在webpack运行到某个时刻的时候 帮我做一些事情
-
+	1. 入口写了两个出口不写  或者 写占位符   此时两个文件都被html-webpack-plugin注入了html模板哦
+	
 */
