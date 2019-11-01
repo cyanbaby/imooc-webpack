@@ -19,8 +19,13 @@ module.exports = {
 				}
 			}
 		},{
-			test: /\.css$/,
-			use: ['style-loader', 'css-loader']
+			test: /\.scss$/,
+			use: [
+			'style-loader', 
+			'css-loader', 
+			'sass-loader',
+			'postcss-loader'
+			]
 		}]
 	},
 	output: {
@@ -31,14 +36,14 @@ module.exports = {
 
 
 /*
-use: ['style-loader', 'css-loader'] 使用两个loader就用数组
+test: /\.scss$/,
+use: ['style-loader', 'css-loader', 'sass-loader'] 
 
-css-loader 分析出几个css文件的关系 index.css中 @import './avatar.cs' 最终合并成一段
-style-loader  写入<head>
+cnpm i -D sass-loader
+cnpm i -D node-sass
 
-注意 这里的 index.js 加载了 index.css模块  
-													 			@impoty './avatar.css'模块没问题 (继续@import 'test.css'模块就会报错? 为什么)
-											 					(继续@import 'test.css'模块就会报错? 为什么)
-													在index.js和index.css平级 @import 'test.css'  没问题
 
+loader的执行顺序是从下到上， 从右到左
+
+postcss-loader  使用PostCss  添加postcss.config.js配置PostCss插件 添加厂商前缀precss
 */
