@@ -1,8 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-// entry: './src/index.js',   是简写
-// main 就是打包输出的 chunk Names
+const webpack = require('webpack');
+
+
 module.exports = {
 	mode: 'development',
 	devtool: 'source-map',
@@ -12,7 +13,9 @@ module.exports = {
 
 	devServer: {
 		contentBase: './dist',
-		open: true
+		open: true,
+		hot: true,
+		hotOnly: true
 	},
 
 	module: {
@@ -40,6 +43,9 @@ module.exports = {
 			'postcss-loader'
 			]
 		},{
+			test: /\.css$/,
+			use: ['style-loader', 'css-loader', 'postcss-loader']
+		},{
 			test: /\.(eot|ttf|woff|svg)$/,
 			use: {
 				loader: 'file-loader'
@@ -47,12 +53,16 @@ module.exports = {
 		}]
 	},
 
-	plugins: [new HtmlWebpackPlugin({
+	plugins: [
+	new HtmlWebpackPlugin({
 		template: 'src/index.html'
-	}), new CleanWebpackPlugin(['dist'])],
+	}), 
+	new CleanWebpackPlugin(['dist']),
+	new webpack.HotModuleReplacementPlugin()
+							
+	],
 
 	output: {
-		publicPath: '/',
 		filename: '[name].js',
 		path: path.resolve(__dirname, 'dist')
 	}
@@ -60,10 +70,13 @@ module.exports = {
 
 
 /*
-"scripts"添加      "server": "node server.js"
-		起一个服务，监听src改变 自动重启服务器，更新网页内容
-
-cnpm i -D express webpack-dev-middleware
-		webapck-dev-middleware 中间件 server用webpack
-
+Hot Module Replacement  热模块替换 特更新
+	我们是没有dist目录呢？  打包生成的文件存在了内存里
+btn的click点击一次新增一个item  单双的bgc不一样  但是直接更改样式之后 生成的item都消失了
+	需求: 更改样式 不要刷新页面, 替换样式就行了 
+	devServer
+			hot: true,		 开启热更新
+			hotOnly: true  即便是热更新没有生效, 不要刷新页面
+			const webpack = require('webpack'); 添加plugins new webpack.HotModuleLeReplacementPlugin()
+ 
 */
