@@ -79,4 +79,29 @@ btn的click点击一次新增一个item  单双的bgc不一样  但是直接更�
 			hotOnly: true  即便是热更新没有生效, 不要刷新页面
 			const webpack = require('webpack'); 添加plugins new webpack.HotModuleLeReplacementPlugin()
  
+需求2, index.js加载了counter.js和number.js  counter模块把1+到17  修改number模块居然又刷新了
+	开启HMR是不刷新了， 但是连number模块的改动也没有更新了
+	// 如果当前项目开启了HMR
+	if(module.hot) {
+		// 如果number改变了执行cb
+		module.hot.accept('./number', ()=> {
+			number();
+		})
+	}
+	又多了一个   number
+	// 如果当前项目开启了HMR
+	if(module.hot) {
+		// 如果number改变了执行cb
+		module.hot.accept('./number', ()=> {
+			document.body.removeChild(document.getElementById('number'));
+			number();
+		})
+	}
+	
+为什么之前的css就不用我们判断呢？   css-loader帮我做了	vue中的vue-loader也是一样...
+
+
+
+
+
 */
