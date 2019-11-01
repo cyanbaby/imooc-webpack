@@ -18,6 +18,9 @@ module.exports = {
 					limit: 20480
 				}
 			}
+		},{
+			test: /\.css$/,
+			use: ['style-loader', 'css-loader']
 		}]
 	},
 	output: {
@@ -28,17 +31,14 @@ module.exports = {
 
 
 /*
-webpack做模块打包的时候, 遇到不知道怎么办的时候, 在module找该怎么办
-	rules 规则 [] 可是多条
-		test 正则 /\.png$/		如果是.png
-		use  
-			loader: 'file-loader'   选择file-loader处理(生成Hash.png移到了dist, require这个图片地方自动改成src=hash)
-			options {
-				// placeholder 占位符
-				name: '[name]_[hash].[ext]',
-				outputPath: 'images/'         //配置路径  是基于output出口的路径哦
-			} 配置file-loader
+use: ['style-loader', 'css-loader'] 使用两个loader就用数组
 
-cnpm i -D url-loader
-	把图片打包成base64了, 但是大图片就很坑哦  limit配置超过(B)就和file-loader一样移动过去, 没有就base64
+css-loader 分析出几个css文件的关系 index.css中 @import './avatar.cs' 最终合并成一段
+style-loader  写入<head>
+
+注意 这里的 index.js 加载了 index.css模块  
+													 			@impoty './avatar.css'模块没问题 (继续@import 'test.css'模块就会报错? 为什么)
+											 					(继续@import 'test.css'模块就会报错? 为什么)
+													在index.js和index.css平级 @import 'test.css'  没问题
+
 */
