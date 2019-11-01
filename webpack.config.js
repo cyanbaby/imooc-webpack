@@ -25,7 +25,8 @@ module.exports = {
 			{
 				loader:'css-loader',
 				options: {
-					importLoaders: 2
+					importLoaders: 2,
+					modules: true
 				}
 			},
 			'sass-loader',
@@ -41,7 +42,7 @@ module.exports = {
 
 
 /*
-如果是多个loader处理 还要配置的话就不要写字符串了(css-loader) 写成对象
-	importLoaders: 2就是在回头走两个2loader的意思  刚好解决之前的多文件.css @import
+
+css 模块化,  如果createAvatar模块也需要 css模块就需要单独引入了 如果过需要模块化样式 也需要和index一样from之后 style.avatar
 
 */
