@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__.p + \"2c7d45f05cd0b1e55c7f09cf1df463bf.png\";\n\n//# sourceURL=webpack:///./src/avatar.png?");
+eval("module.exports = __webpack_require__.p + \"images/avatar_2c7d45f05cd0b1e55c7f09cf1df463bf.png\";\n\n//# sourceURL=webpack:///./src/avatar.png?");
 
 /***/ }),
 
@@ -105,7 +105,7 @@ eval("module.exports = __webpack_require__.p + \"2c7d45f05cd0b1e55c7f09cf1df463b
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _avatar_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./avatar.png */ \"./src/avatar.png\");\n/* harmony import */ var _avatar_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_avatar_png__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\nvar img = new Image();\r\nimg.src = _avatar_png__WEBPACK_IMPORTED_MODULE_0___default.a;\r\n\r\nvar root = document.getElementById('root');\r\nroot.append(img);\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n/*\r\n\r\nvar avatar = require('./avatar.png');\r\n// var avatar = require('http://bl.7yue.pro/images/sentence.6.png');\t\t// 报错\r\n\r\nconsole.log(avatar);\t\t\t// 2c7d45f05cd0b1e55c7f09cf1df463bf.png\r\n\r\n\r\n\r\n*/\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _avatar_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./avatar.png */ \"./src/avatar.png\");\n/* harmony import */ var _avatar_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_avatar_png__WEBPACK_IMPORTED_MODULE_0__);\n\t\t// ES Module\r\n// 思考\r\n// import Header from './header.vue'; \r\n\r\nvar img = new Image();\r\nimg.src = _avatar_png__WEBPACK_IMPORTED_MODULE_0___default.a;\r\n\r\nvar root = document.getElementById('root');\r\nroot.append(img);\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n/*\r\n// CommonJS\r\n\r\nvar avatar = require('./avatar.png');\r\n// var avatar = require('http://bl.7yue.pro/images/sentence.6.png');\t\t// 报错\r\n\r\nconsole.log(avatar);\t\t\t// 2c7d45f05cd0b1e55c7f09cf1df463bf.png\r\n\r\n\r\n\r\n*/\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
