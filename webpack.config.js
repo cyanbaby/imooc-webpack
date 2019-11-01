@@ -22,7 +22,12 @@ module.exports = {
 			test: /\.scss$/,
 			use: [
 			'style-loader', 
-			'css-loader', 
+			{
+				loader:'css-loader',
+				options: {
+					importLoaders: 2
+				}
+			},
 			'sass-loader',
 			'postcss-loader'
 			]
@@ -36,14 +41,7 @@ module.exports = {
 
 
 /*
-test: /\.scss$/,
-use: ['style-loader', 'css-loader', 'sass-loader'] 
+如果是多个loader处理 还要配置的话就不要写字符串了(css-loader) 写成对象
+	importLoaders: 2就是在回头走两个2loader的意思  刚好解决之前的多文件.css @import
 
-cnpm i -D sass-loader
-cnpm i -D node-sass
-
-
-loader的执行顺序是从下到上， 从右到左
-
-postcss-loader  使用PostCss  添加postcss.config.js配置PostCss插件 添加厂商前缀precss
 */
