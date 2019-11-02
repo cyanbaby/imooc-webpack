@@ -1,25 +1,10 @@
-// import './style.css'
+import "@babel/polyfill";
 
-// var btn = document.createElement('button');
-// btn.innerHTML = '新增';
-// document.body.appendChild(btn);
+const arr = [
+	new Promise( () => {}),
+	new Promise( () => {})
+];
 
-// btn.onclick = function() {
-// 	var div = document.createElement('div')
-// 	div.innerHTML = 'item';
-// 	document.body.appendChild(div)
-// }
-
-import counter from './counter';
-import number from './number';
-counter();
-number();
-
-// 如果当前项目开启了HMR
-if(module.hot) {
-	// 如果number改变了执行cb
-	module.hot.accept('./number', ()=> {
-		document.body.removeChild(document.getElementById('number'));
-		number();
-	})
-}
+arr.map(item => {
+	console.log(item);
+})

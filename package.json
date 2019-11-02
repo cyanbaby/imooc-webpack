@@ -1,29 +1,37 @@
 {
-  "name": "imooc-study-webpack4.0",
+  "name": "lesson",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "^9.7.1",
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "autoprefixer": "^9.3.1",
+    "babel-loader": "^8.0.4",
     "clean-webpack-plugin": "^1.0.0",
-    "css-loader": "^3.2.0",
-    "express": "^4.17.1",
-    "file-loader": "^4.2.0",
+    "css-loader": "^1.0.1",
+    "express": "^4.16.4",
+    "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.10.0",
     "postcss-loader": "^3.0.0",
-    "sass-loader": "^8.0.0",
-    "style-loader": "^1.0.0",
-    "url-loader": "^2.2.0",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-middleware": "^3.7.2",
-    "webpack-dev-server": "^3.9.0"
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-middleware": "^3.4.0",
+    "webpack-dev-server": "^3.1.10"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "@babel/runtime": "^7.2.0",
+    "@babel/runtime-corejs2": "^7.2.0",
+    "webpack": "^4.25.1"
   }
 }

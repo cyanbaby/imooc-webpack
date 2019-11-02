@@ -5,102 +5,111 @@ const webpack = require('webpack');
 
 
 module.exports = {
-	mode: 'development',
-	devtool: 'source-map',
-	entry: {
-		main: './src/index.js'
-	},
+  mode: 'development',
+  // devtool: 'source-map',
+  entry: {
+    main: './src/index.js'
+  },
 
-	devServer: {
-		contentBase: './dist',
-		open: true,
-		hot: true,
-		hotOnly: true
-	},
+  devServer: {
+    contentBase: './dist',
+    open: true,
+    hot: true,
+    hotOnly: true
+  },
 
-	module: {
-		rules: [{
-			test: /\.(jpg|png|gif)$/,
-			use: {
-				loader: 'url-loader',
-				options: {
-					name: '[name]_[hash].[ext]',
-					outputPath: 'images/',
-					limit: 20480
-				}
-			}
-		},{
-			test: /\.scss$/,
-			use: [
-			'style-loader', 
-			{
-				loader:'css-loader',
-				options: {
-					importLoaders: 2
-				}
-			},
-			'sass-loader',
-			'postcss-loader'
-			]
-		},{
-			test: /\.css$/,
-			use: ['style-loader', 'css-loader', 'postcss-loader']
-		},{
-			test: /\.(eot|ttf|woff|svg)$/,
-			use: {
-				loader: 'file-loader'
-			}
-		}]
-	},
+  module: {
+    rules: [{ 
+      test: /\.js$/, 
+      exclude: /node_modules/, 
+      loader: 'babel-loader', 
+      options: {
+        presets: [['@babel/preset-env', {
+          useBuiltIns: 'usage'
+        }]]
+      }
+    },{
+      test: /\.(jpg|png|gif)$/,
+      use: {
+        loader: 'url-loader',
+        options: {
+          name: '[name]_[hash].[ext]',
+          outputPath: 'images/',
+          limit: 20480
+        }
+      }
+    },{
+      test: /\.scss$/,
+      use: [
+      'style-loader', 
+      {
+        loader:'css-loader',
+        options: {
+          importLoaders: 2
+        }
+      },
+      'sass-loader',
+      'postcss-loader'
+      ]
+    },{
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader', 'postcss-loader']
+    },{
+      test: /\.(eot|ttf|woff|svg)$/,
+      use: {
+        loader: 'file-loader'
+      }
+    }]
+  },
 
-	plugins: [
-	new HtmlWebpackPlugin({
-		template: 'src/index.html'
-	}), 
-	new CleanWebpackPlugin(['dist']),
-	new webpack.HotModuleReplacementPlugin()
-							
-	],
+  plugins: [
+  new HtmlWebpackPlugin({
+    template: 'src/index.html'
+  }), 
+  new CleanWebpackPlugin(['dist']),
+  new webpack.HotModuleReplacementPlugin()
+              
+  ],
 
-	output: {
-		filename: '[name].js',
-		path: path.resolve(__dirname, 'dist')
-	}
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist')
+  }
 }
 
 
 /*
-Hot Module Replacement  热模块替换 特更新
-	我们是没有dist目录呢？  打包生成的文件存在了内存里
-btn的click点击一次新增一个item  单双的bgc不一样  但是直接更改样式之后 生成的item都消失了
-	需求: 更改样式 不要刷新页面, 替换样式就行了 
-	devServer
-			hot: true,		 开启热更新
-			hotOnly: true  即便是热更新没有生效, 不要刷新页面
-			const webpack = require('webpack'); 添加plugins new webpack.HotModuleLeReplacementPlugin()
- 
-需求2, index.js加载了counter.js和number.js  counter模块把1+到17  修改number模块居然又刷新了
-	开启HMR是不刷新了， 但是连number模块的改动也没有更新了
-	// 如果当前项目开启了HMR
-	if(module.hot) {
-		// 如果number改变了执行cb
-		module.hot.accept('./number', ()=> {
-			number();
-		})
-	}
-	又多了一个   number
-	// 如果当前项目开启了HMR
-	if(module.hot) {
-		// 如果number改变了执行cb
-		module.hot.accept('./number', ()=> {
-			document.body.removeChild(document.getElementById('number'));
-			number();
-		})
-	}
-	
-为什么之前的css就不用我们判断呢？   css-loader帮我做了	vue中的vue-loader也是一样...
+cnpm install --save-dev babel-loader @babel/core
+cnpm install @babel/preset-env --save-dev
 
 
+babel-loader可以传递参数
+{
+  presets: ["@babel/presets-env"]
+}
+
+npx webpack  OK了 但是只翻译了一部分  map函数 低版本还是不支持的,
+
+不仅语法转换, 还需map..新特性给低版本浏览器做补充  cnpm i @babel/polyfill -S(--save)
+    注意需要放在项目中 用到新特性的模块引入  比如index.js
+    import "@babel/polyfill";
+
+    const arr = [
+      new Promise( () => {}),
+      new Promise( () => {})
+    ];
+
+    arr.map(item => {
+      console.log(item);
+    })
+
+但是index.js的main.js很大很大,  添加useBuiltIns配置就行了用到map就打包map其他的不和垫片一起打包 (promise支持ie9)
+    options: {
+      presets: [['@babel/preset-env', {
+        useBuiltIns: 'usage'
+      }]]
+    }
+WARNING: We noticed you're using the `useBuiltIns` option without declaring a core-js version. Currently, we assume version 2.x when no version is passed. Since this default version will likely change in future versions of Babel, we recommend explicitly setting the core-js version you are using via the `corejs` option.
 
 
 
