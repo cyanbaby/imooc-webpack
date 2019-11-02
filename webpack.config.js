@@ -22,12 +22,7 @@ module.exports = {
     rules: [{ 
       test: /\.js$/, 
       exclude: /node_modules/, 
-      loader: 'babel-loader', 
-      options: {
-        presets: [['@babel/preset-env', {
-          useBuiltIns: 'usage'
-        }]]
-      }
+      loader: 'babel-loader'
     },{
       test: /\.(jpg|png|gif)$/,
       use: {
@@ -113,4 +108,57 @@ WARNING: We noticed you're using the `useBuiltIns` option without declaring a co
 
 
 
+还可以配置其他参数  浏览器兼容的
+    options: {
+      presets: [
+        ['@babel/preset-env', {  
+          targets: {
+            chrome: "67"
+          },
+          useBuiltIns: 'usage'   // 根据业务需求注入 @babel/polyfill的涉及体积
+        }]
+      ]
+      }
+
+这个方案也不是万能的, 如果index.js模块  我们是要开发一个类库或者组件库  正常业务代码就按妆面的写就行了
+    import "@babel/polyfill";  这样注入会污染全局变量
+    cnpm i -D @babel/plugin-transform-runtime
+    cnpm i -S @babel/runtime
+    去掉index.jsimport和 options里的presets配置配置plugin
+        "plugins": [
+          ["@babel/plugin-transform-runtime", {   // 闭包注入 不污染全局
+            "corejs": 2,        // 改成了2 需要 cnpm i -S @babel/runtime-corejs2
+            "helpers": true,
+            "regenerator": true,
+            "useESModules": false
+          }]
+        ]
+大家知道 corejs 是一个给低版本的浏览器提供接口的库，如 Promise, map, set 等。
+在 babel 中你设置成 false 或者不设置，就是引入的是 corejs 中的库，
+而且在全局中引入，也就是说侵入了全局的变量。
+
+
+如果你的全局有一个引入，不要让引入的库影响全局，
+那你就需要引把 corejs 设置成 2。：
+
+
+配置多了 单独写个.babelrc 比较好  这是网上改编的，es5转es3？ promise兼容最低到ie9?
+
+    {
+      "presets": [
+          ["@babel/preset-env", {
+            "modules": false,
+            "targets": {
+              "ie": "11"
+            },
+            "useBuiltIns": "usage"
+          }]
+        ],
+        "plugins": [
+          ["@babel/plugin-transform-runtime",{
+            "corejs": 2
+          }]
+        ]
+    }
+  
 */

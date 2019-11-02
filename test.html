@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>解决IE不兼容es6</title>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+    <script src = "https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+</head>
+<body>
+    <div id="bigBox">
+        
+    </div>
+</body>
+<script type="text/babel">
+    var html =`<ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>`
+  console.log('解决IE不兼容es6');
+  console.log(document.getElementById('bigBox'));
+  
+    document.getElementById('bigBox').innerHTML = html
+    new Promise(function(resolve,reject) {
+        var flag = 1;
+        if(flag){
+            resolve(flag);
+        }
+    }).then(function (data) {
+        console.log(data);
+    })
+</script>
+</html>
