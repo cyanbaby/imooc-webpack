@@ -5,8 +5,8 @@ const webpack = require('webpack');
 
 
 module.exports = {
-  mode: 'development',
-  // devtool: 'source-map',
+  mode: 'production',
+  devtool: 'cheap-module-source-map',
   entry: {
     main: './src/index.js'
   },
@@ -66,6 +66,10 @@ module.exports = {
               
   ],
 
+  // optimization: {
+  //   usedExports: true
+  // },
+
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
@@ -75,25 +79,16 @@ module.exports = {
 
 /*
 
-webpack 打包react
-cnpm i react react-dom  -S   
-cnpm i @babel/preset-react -D
+tree shaking  摇树  支持支ES Module
+  development 默认没有Tree Shaking功能
+    optimization: {
+      usedExports: true
+    },
+  package.json  @babel/poly-fill其实就是在window上绑定了一个全局的变量promise..map..并没有到处模块
+        如果用tree shaking 就会把@babel/poly-fill给忽略掉
+        "sideEffects": ["@babel/polly-fill"], false是一样的(因为我们没有引入@babel/poly-fill) 如果引入了, 还不要摇树,就写@babel/poly-fill
+        一般会把*.css写上去
+        exports provided: add, minus 
+        exports used: add  如果上线了, 就会只有这一个代码了 production optimization都是自动的
 
-
-
-babel的presets的插件是是由顺序的  从下而上,从右到左
-{
-  "presets": [
-      [
-        "@babel/preset-env", {
-          targets: {
-            chrome: "67"
-          },
-          useBuiltIns: 'usage'
-        }
-      ],
-      "@babel/preset-react"
-  ]
-}
-  
 */
