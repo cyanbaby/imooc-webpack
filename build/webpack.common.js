@@ -62,8 +62,11 @@ module.exports = {
       // chunks: 'inintial', // inintial只对同步代码做分割  
       // chunks: 'async',    // async表示做代码分割的时候只对异步代码生效  
       minSize: 0,  // 符合minSize要求还是不分割呢？  走到cacheGroups 不是 node_modules中的default又是false
-      maxSize: 0,   
-      minChunks: 1,
+      maxSize: 50000,  // 可配可不配  比如现在引入一个1mb的 lodash webpack会尝试次拆分(一般都是拆不了的)
+      // 一般不配置
+      // vendors~main~._node_modules__lodash@4.17.15@lodash_lodash.js~391cb1ba.js vender.js
+
+      minChunks: 1,  
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
       automaticNameDelimiter: '~',
