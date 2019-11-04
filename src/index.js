@@ -1,16 +1,16 @@
-// es7异步函数
-async function getComponent() {
-  const { default: _ } = await import(/* webpackChunkName:"lodash" */ 'lodash');
+// cnpm i -D mini-css-extract-plugin  不支持css模块热更新 只适合线上 dev和prod分别style lodaer prod配置相应pugin
+// package.json sideEffects;  npm run build
+import './style.css';
+import './style1.css';
+console.log('hello webpack');
 
-  const element = document.createElement('div');
-  element.innerHTML = _.join(['cyan', 'baby'], '-');
 
-  return element;
 
-}
+/*
+import './style.css';
 
-document.addEventListener('click', () => {
-  getComponent().then(element => {
-    document.body.appendChild(element);
-  })
-})
+console.log('hello webpack');
+
+// vendors~main.chunk直接把css打包到js里了
+
+//*/
