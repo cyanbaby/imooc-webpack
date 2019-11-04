@@ -4,7 +4,7 @@
 /******/ 		var chunkIds = data[0];
 /******/ 		var moreModules = data[1];
 /******/
-/******/ 		var prefetchChunks = data[3] || [];
+/******/
 /******/ 		// add "moreModules" to the modules object,
 /******/ 		// then flag all "chunkIds" as loaded and fire callback
 /******/ 		var moduleId, chunkId, i = 0, resolves = [];
@@ -21,21 +21,7 @@
 /******/ 			}
 /******/ 		}
 /******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
-/******/ 		// chunk prefetching for javascript
-/******/ 		prefetchChunks.forEach(function(chunkId) {
-/******/ 			if(installedChunks[chunkId] === undefined) {
-/******/ 				installedChunks[chunkId] = null;
-/******/ 				var link = document.createElement('link');
 /******/
-/******/ 				if (__webpack_require__.nc) {
-/******/ 					link.setAttribute("nonce", __webpack_require__.nc);
-/******/ 				}
-/******/ 				link.rel = "prefetch";
-/******/ 				link.as = "script";
-/******/ 				link.href = jsonpScriptSrc(chunkId);
-/******/ 				document.head.appendChild(link);
-/******/ 			}
-/******/ 		});
 /******/ 		while(resolves.length) {
 /******/ 			resolves.shift()();
 /******/ 		}
@@ -106,7 +92,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "3f2924130b0b30e625ef";
+/******/ 	var hotCurrentHash = "a88d1abb6e5b7563375a";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -760,7 +746,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"vendors~lodash":"vendors~lodash"}[chunkId]||chunkId) + ".chunk.js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -918,13 +904,8 @@
 /******/ 	var parentJsonpFunction = oldJsonpFunction;
 /******/
 /******/
-/******/ 	var startupResult = (function() {
 /******/ 	// Load entry module and return exports
 /******/ 	return hotCreateRequire("./src/index.js")(__webpack_require__.s = "./src/index.js");
-/******/ 	})();
-/******/
-/******/ 	webpackJsonpCallback([[], {}, 0, [0]]);
-/******/ 	return startupResult;
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -937,7 +918,7 @@
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("document.addEventListener('click', () => {\n  __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./click.js */ \"./src/click.js\")).then(({\n    default: func\n  }) => {\n    func();\n  });\n}); // imooc 登录的弹出层 点击再加载 （机智的小伙伴发现会不会影响性能呢）\n// 带宽空闲的时候偷偷的把 登录的模块加载一下\n\n/*\r\n\r\n    splitChunks: {\r\n      // 默认是async\r\n      chunks: 'all'\r\n    lodash 和 jquery代码分割是第二次访问才有缓存  \r\n    而 webpack希望我们第一次访问就能很快  lodash和jquery打包成一个文件就不能满足需求了\r\n\r\ndocument.addEventListener('click', () => {\r\n  const element = document.createElement('div');\r\n  element.innerHTML = 'cyan baby';\r\n  document.body.appendChild(element);\r\n})\r\n\r\n// 不点击页面的情况下 \r\n// chrome ctrl+shift+p Show Coverage 点击变红录制 main.js利用率70%多\r\n// 在Sources中看红绿色  \r\n\r\n\r\n*///# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvaW5kZXguanMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvaW5kZXguanM/YjYzNSJdLCJzb3VyY2VzQ29udGVudCI6WyJkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsICgpID0+IHtcclxuICBpbXBvcnQoLyogd2VicGFja1ByZWZldGNoOiB0cnVlICovICcuL2NsaWNrLmpzJykudGhlbigoe2RlZmF1bHQ6IGZ1bmN9KSA9PiB7XHJcbiAgICBmdW5jKCk7XHJcbiAgfSlcclxufSlcclxuXHJcbi8vIGltb29jIOeZu+W9leeahOW8ueWHuuWxgiDngrnlh7vlho3liqDovb0g77yI5py65pm655qE5bCP5LyZ5Ly05Y+R546w5Lya5LiN5Lya5b2x5ZON5oCn6IO95ZGi77yJXHJcbi8vIOW4puWuveepuumXsueahOaXtuWAmeWBt+WBt+eahOaKiiDnmbvlvZXnmoTmqKHlnZfliqDovb3kuIDkuItcclxuXHJcblxyXG4vKlxyXG5cclxuICAgIHNwbGl0Q2h1bmtzOiB7XHJcbiAgICAgIC8vIOm7mOiupOaYr2FzeW5jXHJcbiAgICAgIGNodW5rczogJ2FsbCdcclxuICAgIGxvZGFzaCDlkowganF1ZXJ55Luj56CB5YiG5Ymy5piv56ys5LqM5qyh6K6/6Zeu5omN5pyJ57yT5a2YICBcclxuICAgIOiAjCB3ZWJwYWNr5biM5pyb5oiR5Lus56ys5LiA5qyh6K6/6Zeu5bCx6IO95b6I5b+rICBsb2Rhc2jlkoxqcXVlcnnmiZPljIXmiJDkuIDkuKrmlofku7blsLHkuI3og73mu6HotrPpnIDmsYLkuoZcclxuXHJcbmRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ2NsaWNrJywgKCkgPT4ge1xyXG4gIGNvbnN0IGVsZW1lbnQgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTtcclxuICBlbGVtZW50LmlubmVySFRNTCA9ICdjeWFuIGJhYnknO1xyXG4gIGRvY3VtZW50LmJvZHkuYXBwZW5kQ2hpbGQoZWxlbWVudCk7XHJcbn0pXHJcblxyXG4vLyDkuI3ngrnlh7vpobXpnaLnmoTmg4XlhrXkuIsgXHJcbi8vIGNocm9tZSBjdHJsK3NoaWZ0K3AgU2hvdyBDb3ZlcmFnZSDngrnlh7vlj5jnuqLlvZXliLYgbWFpbi5qc+WIqeeUqOeOhzcwJeWkmlxyXG4vLyDlnKhTb3VyY2Vz5Lit55yL57qi57u/6ImyICBcclxuXHJcblxyXG4qL1xyXG4iXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0EsbUhBQUE7QUFBQTtBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBR0E7QUFDQTtBQUVBO0FBQ0E7Ozs7Ozs7Ozs7Ozs7Ozs7OztBIiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./src/index.js\n");
+eval("// es7异步函数\nasync function getComponent() {\n  const {\n    default: _\n  } = await __webpack_require__.e(/*! import() | lodash */ \"vendors~lodash\").then(__webpack_require__.t.bind(null, /*! lodash */ \"./node_modules/_lodash@4.17.15@lodash/lodash.js\", 7));\n  const element = document.createElement('div');\n  element.innerHTML = _.join(['cyan', 'baby'], '-');\n  return element;\n}\n\ndocument.addEventListener('click', () => {\n  getComponent().then(element => {\n    document.body.appendChild(element);\n  });\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvaW5kZXguanMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvaW5kZXguanM/YjYzNSJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBlczflvILmraXlh73mlbBcclxuYXN5bmMgZnVuY3Rpb24gZ2V0Q29tcG9uZW50KCkge1xyXG4gIGNvbnN0IHsgZGVmYXVsdDogXyB9ID0gYXdhaXQgaW1wb3J0KC8qIHdlYnBhY2tDaHVua05hbWU6XCJsb2Rhc2hcIiAqLyAnbG9kYXNoJyk7XHJcblxyXG4gIGNvbnN0IGVsZW1lbnQgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTtcclxuICBlbGVtZW50LmlubmVySFRNTCA9IF8uam9pbihbJ2N5YW4nLCAnYmFieSddLCAnLScpO1xyXG5cclxuICByZXR1cm4gZWxlbWVudDtcclxuXHJcbn1cclxuXHJcbmRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ2NsaWNrJywgKCkgPT4ge1xyXG4gIGdldENvbXBvbmVudCgpLnRoZW4oZWxlbWVudCA9PiB7XHJcbiAgICBkb2N1bWVudC5ib2R5LmFwcGVuZENoaWxkKGVsZW1lbnQpO1xyXG4gIH0pXHJcbn0pIl0sIm1hcHBpbmdzIjoiQUFBQTtBQUNBO0FBQ0E7QUFBQTtBQUFBO0FBRUE7QUFDQTtBQUVBO0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/index.js\n");
 
 /***/ })
 

@@ -60,6 +60,12 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
+    chunkFilename: '[name].chunk.js',
     path: path.resolve(__dirname, '../dist')
   }
 }
+
+
+// chunkFilename: '[name].chunk.js'
+// entry里面的main.. 都会走output里面的filename配置项
+// 非入口的chunk模块会走chunkFilename配置项
