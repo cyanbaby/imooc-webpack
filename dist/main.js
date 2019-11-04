@@ -113,7 +113,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "238ad56cf3c595c0be59";
+/******/ 	var hotCurrentHash = "1fedb1db1d1cd979158a";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -857,24 +857,9 @@
 /******/
 /******/
 /******/ 	// add entry module to deferred list
-/******/ 	deferredModules.push(["./src/index.js","vendors~main"]);
+/******/ 	deferredModules.push(["./src/index.js","default~main"]);
 /******/ 	// run deferred modules when ready
 /******/ 	return checkDeferredModules();
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/*! no exports provided */
-/*! all exports used */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/_lodash@4.17.15@lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n// 同步引入模块\n\nvar element = document.createElement('div');\nelement.innerHTML = lodash__WEBPACK_IMPORTED_MODULE_0___default.a.join(['cyan', 'baby'], '-');\ndocument.body.appendChild(element); // // 异步引入模块\n// // 魔法注释更改代码分割的加载模块的名称  vendors~lodash.js了  \n// // 去配置optimization中的splitChunks:\n// function getComponent() {\n//   return import(/* webpackChunkName:\"lodash\" */ 'lodash').then(({ default: _ }) => {\n//     var element = document.createElement('div');\n//     element.innerHTML = _.join(['cyan', 'baby'], '-');\n//     return element;\n//   });\n// }\n// // 异步加载js,   html的插件只注入一个main.js  又main.js异步加载0.js\n// getComponent().then(element => {\n//   document.body.appendChild(element);\n// })//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvaW5kZXguanMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvaW5kZXguanM/YjYzNSJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyDlkIzmraXlvJXlhaXmqKHlnZdcclxuaW1wb3J0IF8gZnJvbSAnbG9kYXNoJztcclxudmFyIGVsZW1lbnQgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTtcclxuZWxlbWVudC5pbm5lckhUTUwgPSBfLmpvaW4oWydjeWFuJywgJ2JhYnknXSwgJy0nKTtcclxuZG9jdW1lbnQuYm9keS5hcHBlbmRDaGlsZChlbGVtZW50KTtcclxuXHJcblxyXG5cclxuLy8gLy8g5byC5q2l5byV5YWl5qih5Z2XXHJcbi8vIC8vIOmtlOazleazqOmHiuabtOaUueS7o+eggeWIhuWJsueahOWKoOi9veaooeWdl+eahOWQjeensCAgdmVuZG9yc35sb2Rhc2guanPkuoYgIFxyXG4vLyAvLyDljrvphY3nva5vcHRpbWl6YXRpb27kuK3nmoRzcGxpdENodW5rczpcclxuLy8gZnVuY3Rpb24gZ2V0Q29tcG9uZW50KCkge1xyXG4vLyAgIHJldHVybiBpbXBvcnQoLyogd2VicGFja0NodW5rTmFtZTpcImxvZGFzaFwiICovICdsb2Rhc2gnKS50aGVuKCh7IGRlZmF1bHQ6IF8gfSkgPT4ge1xyXG4vLyAgICAgdmFyIGVsZW1lbnQgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTtcclxuLy8gICAgIGVsZW1lbnQuaW5uZXJIVE1MID0gXy5qb2luKFsnY3lhbicsICdiYWJ5J10sICctJyk7XHJcbi8vICAgICByZXR1cm4gZWxlbWVudDtcclxuLy8gICB9KTtcclxuLy8gfVxyXG5cclxuLy8gLy8g5byC5q2l5Yqg6L29anMsICAgaHRtbOeahOaPkuS7tuWPquazqOWFpeS4gOS4qm1haW4uanMgIOWPiG1haW4uanPlvILmraXliqDovb0wLmpzXHJcblxyXG4vLyBnZXRDb21wb25lbnQoKS50aGVuKGVsZW1lbnQgPT4ge1xyXG4vLyAgIGRvY3VtZW50LmJvZHkuYXBwZW5kQ2hpbGQoZWxlbWVudCk7XHJcbi8vIH0pXHJcblxyXG5cclxuXHJcblxyXG5cclxuXHJcbiJdLCJtYXBwaW5ncyI6IkFBQUE7QUFBQTtBQUFBO0FBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUtBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUVBO0FBRUE7QUFDQTtBQUNBIiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./src/index.js\n");
-
-/***/ })
-
-/******/ });
+/******/ ([]);
