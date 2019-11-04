@@ -15,20 +15,6 @@ document.addEventListener('click', () => {
   })
 })
 
-// 使用promise要@babel/polyfill 如何没有也没有关系  .babelrc的presets @babel/preset-env 中设置了useBuiltIns: 'usage'
-// 新版的babel内置了，会自动注入的
-
-// function getComponent() {
-//   return import(/* webpackChunkName:"lodash" */ 'lodash').then(({ default: _ }) => {
-//     var element = document.createElement('div');
-//     element.innerHTML = _.join(['cyan', 'baby'], '-');
-//     return element;
-//   });
-// }
-
-// document.addEventListener('click', () => {
-//   getComponent().then(element => {
-//     document.body.appendChild(element);
-//   })
-// })
-
+// 如今index.js生成了两个js 文件 main.js和vendors~lodash.js分别就是一个Chunk CMD可以看到ChunkName
+// 回到最初 我们splitChunks里就配置了一个chuns:all其他的全是缺省; 默认项目
+// 其他全部默认就可以了
