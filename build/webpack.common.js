@@ -70,7 +70,7 @@ module.exports = {
                                     // 超过3个就不会分割了
       automaticNameDelimiter: '~',  // 链接符~  已经见过了vonder~main.js
       name: true,                   // 让下面分组的filename有效
-      cacheGroups: {
+      cacheGroups: {                // 缓存组，如果没这个 lodash和jquery就分不到一组了
 
         vendors: {
           test: /[\\/]node_modules[\\/]/,   
@@ -78,10 +78,13 @@ module.exports = {
           filename: 'vendors.js',       
         },
 
+        // default根本没有test, 那jquery 不是两个组都符合了？
+        // 根据priority的值判断 进值大的分组
       
         default: {           
+          // priority: -9,
           priority: -20,
-          reuseExistingChunk: true,
+          reuseExistingChunk: true,   
           filename: 'common.js'   
         }
       }
