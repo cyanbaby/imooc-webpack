@@ -53,7 +53,7 @@ module.exports = {
     }), 
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname, '../')
-    })     
+    }),     
   ],
 
 
