@@ -75,7 +75,7 @@ module.exports = {
         vendors: {
           test: /[\\/]node_modules[\\/]/,   
           priority: -10,                   
-          filename: 'vendors.js',       
+          // filename: 'vendors.js' // 还用就报错了，因为用魔法注释已经命名了啊23333333
         },
 
         // default根本没有test, 那jquery 不是两个组都符合了？
