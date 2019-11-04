@@ -58,34 +58,31 @@ module.exports = {
 
   optimization: {
     splitChunks: {
-      chunks: 'all',      // all同步/异步都分割  但是webpack知道了 配置继续往下走 cacheGroups
-      // chunks: 'inintial', // inintial只对同步代码做分割  
-      // chunks: 'async',    // async表示做代码分割的时候只对异步代码生效  
-      minSize: 0,  // 符合minSize要求还是不分割呢？  走到cacheGroups 不是 node_modules中的default又是false
-      maxSize: 50000,  // 可配可不配  比如现在引入一个1mb的 lodash webpack会尝试次拆分(一般都是拆不了的)
-      // 一般不配置
-      // vendors~main~._node_modules__lodash@4.17.15@lodash_lodash.js~391cb1ba.js vender.js
+      chunks: 'all',      
+      minSize: 30000,  
 
-      minChunks: 1,  
-      maxAsyncRequests: 5,
-      maxInitialRequests: 3,
-      automaticNameDelimiter: '~',
-      name: true,
+      // minChunks: 2,  // 当一个模块被用 至少 X次了, 才会进行代码分割
+      minChunks: 1, 
+
+      maxAsyncRequests: 5,          // 同时加载的模块数量, 比如目前已经分割了10个模块 就违反了这个要求
+                                    // 前5个分割 后面的不分割了
+      maxInitialRequests: 3,        // 入口加载的时候引入了其他的js模块 如果分割也只能最多分割3个模块
+                                    // 超过3个就不会分割了
+      automaticNameDelimiter: '~',  // 链接符~  已经见过了vonder~main.js
+      name: true,                   // 让下面分组的filename有效
       cacheGroups: {
-        // vendors: false,   // chunks: 'all'  这里要配置才能实现同步的代码分割
-        
 
         vendors: {
-          test: /[\\/]node_modules[\\/]/,   // 是不是在这个目录啊 在才符合同步分组 要求 venders~main(入口).js
-          priority: -10,                    // 
-          filename: 'vendors.js',        // 自定义名称
+          test: /[\\/]node_modules[\\/]/,   
+          priority: -10,                   
+          filename: 'vendors.js',       
         },
 
-        // default: false,   // 默认当到哪儿也不知道
-        default: {           // 会分组到default~main.js
+      
+        default: {           
           priority: -20,
           reuseExistingChunk: true,
-          filename: 'common.js'   // 自定义模块名称
+          filename: 'common.js'   
         }
       }
     }
