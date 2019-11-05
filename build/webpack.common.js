@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
 	entry: {
@@ -36,6 +37,10 @@ module.exports = {
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname, '../')
     }),     
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      _join: ['lodash', 'join']
+    })
   ],
   optimization: {
     usedExports: true,
@@ -51,9 +56,12 @@ module.exports = {
     path: path.resolve(__dirname, '../dist')
   }
 }
+/*
+    如果发现模块有用到$, 就会帮我们自动引入jquery, 然后把我们的jquery赋值给$
+    mew webpack.ProvidePlugin({
+      $: 'jquery'
+    })
 
-// 多入口js, 希望他们的引入的css文件都打包到一个css文件
-
-// 多入口js, 希望他们的引入的css文件分别打包
-
-// 底层都是用optimization  splitChunks 的 cacheGroups  去官网看啦
+    把lodash里的join给_join
+    _join: ['lodash', 'join']
+*/
