@@ -10,6 +10,7 @@ module.exports = {
 		main: './src/index.js'
 	},
 	devServer: {
+		overlay: true,
 		contentBase: './dist',
 		open: true,
 		port: 8080,
@@ -34,7 +35,17 @@ module.exports = {
 		rules: [{ 
 			test: /\.js$/, 
 			exclude: /node_modules/, 
-			loader: 'babel-loader',
+			use: [
+				// {
+				// 	loader: 'eslint-loader',
+				// 	options: {
+				// 		fix: true
+				// 	}
+				// },
+				// force: 'pre',
+				'babel-loader'
+
+			]
 		}, {
 			test: /\.(jpg|png|gif)$/,
 			use: {
@@ -84,3 +95,6 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist')
 	}
 }
+
+
+// git 有个钩子 命令行 eslint src
