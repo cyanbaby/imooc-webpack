@@ -7,9 +7,15 @@ module.exports = {
 	entry: {
 		main: './src/index.js',
 	},
+	resolve: {
+		extensions: ['.js', '.jsx'],
+		alias: {
+			child: path.resolve(__dirname, '../src/a/b/c/child')
+		}
+	},
 	module: {
 		rules: [{ 
-			test: /\.js$/, 
+			test: /\.jsx?$/, 
 			include: path.resolve(__dirname, '../src'),
 			use: [{
 				loader: 'babel-loader'
