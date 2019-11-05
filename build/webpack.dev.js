@@ -1,6 +1,6 @@
 const webpack = require('webpack');
-const merge = require('webpack-merge');
-const conmonConfig = require('./webpack.common.js');
+// const merge = require('webpack-merge');
+// const conmonConfig = require('./webpack.common.js');
 
 const devConfig = {
   mode: 'development',
@@ -8,6 +8,7 @@ const devConfig = {
   devServer: {
     contentBase: './dist',
     open: true,
+    port: 8080,
     hot: true,
   },
 
@@ -31,11 +32,15 @@ const devConfig = {
     }]
   },
 
-
-
   plugins: [
     new webpack.HotModuleReplacementPlugin()  
   ],
 
+  output: {
+    filename: '[name].js',
+    chunkFilename: '[name].js',
+  }
+
 }
-module.exports = merge(conmonConfig, devConfig);
+// module.exports = merge(conmonConfig, devConfig);
+module.exports = devConfig;

@@ -1,7 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const merge = require('webpack-merge');
-const conmonConfig = require('./webpack.common.js');
+// const merge = require('webpack-merge');
+// const conmonConfig = require('./webpack.common.js');
 
 const prodConfig = {
   mode: 'production',
@@ -36,10 +36,18 @@ const prodConfig = {
       filename: '[name].css',
       chunkFilename: '[name].chunk.css'
     })
-  ]
+  ],
+
+  output: {
+    filename: '[name].[contenthash].js',
+    chunkFilename: '[name].[contenthash].js',
+  }
+
 }
 
-module.exports = merge(conmonConfig, prodConfig)
+// module.exports = merge(conmonConfig, prodConfig)
+module.exports = prodConfig;
+
 
 
 // 走filename: '[name].css',路线， 因为是单独打包，而且在页面直接引入一个link  

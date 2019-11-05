@@ -2,36 +2,37 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
-
-module.exports = {
-	entry: {
-    main: './src/index.js'
-	},
-
+const merge = require('webpack-merge');
+const devConfig = require('./webpack.dev.js');
+const prodConfig = require('./webpack.prod.js');
+const commonConfig = {
+  entry: {
+    main: './src/index.js',
+  },
   module: {
     rules: [{ 
       test: /\.js$/, 
-      exclude: /node_modules/, 
+      exclude: /node_modules/,
       use: [{
         loader: 'babel-loader'
-      },{
+      }, {
         loader: 'imports-loader?this=>window'
       }]
-    },{
+    }, {
       test: /\.(jpg|png|gif)$/,
       use: {
         loader: 'url-loader',
         options: {
           name: '[name]_[hash].[ext]',
           outputPath: 'images/',
-          limit: 20480
+          limit: 10240
         }
-      }
-    },{
-      test: /\.(eot|ttf|woff|svg)$/,
+      } 
+    }, {
+      test: /\.(eot|ttf|svg)$/,
       use: {
         loader: 'file-loader'
-      }
+      } 
     }]
   },
   plugins: [
@@ -40,32 +41,39 @@ module.exports = {
     }), 
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname, '../')
-    }),     
+    }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       _join: ['lodash', 'join']
-    })
+    }),
   ],
   optimization: {
+    runtimeChunk: {
+      name: 'runtime'
+    },
     usedExports: true,
     splitChunks: {
-      chunks: 'all'
-    },
-
+      chunks: 'all',
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          name: 'vendors',
+        }
+      }
+    }
   },
-
+  performance: false,
   output: {
-    filename: '[name].js',
-    chunkFilename: '[name].chunk.js',
     path: path.resolve(__dirname, '../dist')
   }
 }
-/*
-    如果发现模块有用到$, 就会帮我们自动引入jquery, 然后把我们的jquery赋值给$
-    mew webpack.ProvidePlugin({
-      $: 'jquery'
-    })
 
-    把lodash里的join给_join
-    _join: ['lodash', 'join']
-*/
+module.exports = (env) => {
+  if(env && env.production) {
+    return merge(commonConfig, prodConfig);
+  }else {
+    return merge(commonConfig, devConfig);
+  }
+}
+
